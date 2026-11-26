@@ -65,11 +65,12 @@ main { padding: 20px 24px; max-width: 1400px; margin: 0 auto; }
 /* Startseite */
 .startseite { max-width: 820px; }
 .einleitung { margin-top: 0; }
-.kapitel h2 { margin: 28px 0 8px; font-size: 1.25rem; }
+.kategorie h2 { margin: 28px 0 8px; font-size: 1.25rem; }
 .aufgabenliste { margin: 0; padding-left: 1.6em; }
 .aufgabenliste li { padding: 3px 0; }
 .aufgabenliste code { color: var(--leise); }
 .aufgabenliste .fehlt { color: var(--rot); }
+.kategorie .leer { margin: 0; color: var(--leise); }
 .haken { color: var(--gruen); font-weight: 700; }
 
 /* Aufgabenseite: Text oben, darunter Editor und Ergebnisse nebeneinander */
@@ -92,7 +93,7 @@ main { padding: 20px 24px; max-width: 1400px; margin: 0 auto; }
   .beschreibung, .arbeitsbereich { grid-template-columns: minmax(0, 1fr); }
 }
 
-.kapitelname { margin: 0; color: var(--leise); font-size: 0.9rem; }
+.kategoriename { margin: 0; color: var(--leise); font-size: 0.9rem; }
 h1 { margin: 2px 0 8px; font-size: 1.5rem; line-height: 1.25; }
 .beschreibung h2, .ergebnis h2 { font-size: 1rem; margin: 14px 0 6px; }
 .beispielbereich h2 { margin-top: 26px; }

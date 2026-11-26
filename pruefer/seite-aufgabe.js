@@ -40,7 +40,7 @@
   }
   setzeLink($("vorherige"), alle[position - 1]);
   setzeLink($("naechste"), alle[position + 1]);
-  $("uebersicht").href = "index.html?kapitel=" + alle[position].kapitel.nummer;
+  $("uebersicht").href = "index.html?kategorie=" + encodeURIComponent(alle[position].kategorie.ordner);
 
   Aufgaben.ladeAufgaben([id]).then(function (liste) {
     const aufgabe = liste[0];
@@ -48,7 +48,7 @@
       zeigeMeldung("Die Aufgabendatei aufgaben/" + id + ".js wurde nicht gefunden.");
       return;
     }
-    zeigeAufgabe(aufgabe, alle[position].kapitel);
+    zeigeAufgabe(aufgabe, alle[position].kategorie);
   });
 
   function startcode(aufgabe) {
@@ -57,9 +57,9 @@
     return "function " + aufgabe.funktion + "(" + parameter.join(", ") + ") {\n  \n}\n";
   }
 
-  function zeigeAufgabe(aufgabe, kapitel) {
+  function zeigeAufgabe(aufgabe, kategorie) {
     document.title = aufgabe.titel + " · SE1 Selbstkontrolle";
-    $("kapitelname").textContent = "Kapitel " + kapitel.nummer + ": " + kapitel.titel;
+    $("kategoriename").textContent = kategorie.titel;
     $("titel").textContent = aufgabe.titel;
     $("text").innerHTML = aufgabe.text; // Aufgabentexte stammen aus dem Repository
     $("funktionsname").textContent = aufgabe.funktion + "()";
