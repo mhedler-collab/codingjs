@@ -72,23 +72,39 @@ main { padding: 20px 24px; max-width: 1400px; margin: 0 auto; }
 .aufgabenliste .fehlt { color: var(--rot); }
 .haken { color: var(--gruen); font-weight: 700; }
 
-/* Aufgabenseite */
-.aufgabe {
+/* Aufgabenseite: Text oben, darunter Editor und Ergebnisse nebeneinander */
+.beschreibung {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: 28px;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 8px 28px;
+  align-items: start;
+  margin-bottom: 14px;
+}
+
+.arbeitsbereich {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
   align-items: start;
 }
 
 @media (max-width: 900px) {
-  .aufgabe { grid-template-columns: minmax(0, 1fr); }
+  .beschreibung, .arbeitsbereich { grid-template-columns: minmax(0, 1fr); }
 }
 
 .kapitelname { margin: 0; color: var(--leise); font-size: 0.9rem; }
-h1 { margin: 2px 0 12px; font-size: 1.6rem; line-height: 1.25; }
-.beschreibung h2, .ergebnis h2 { font-size: 1rem; margin: 18px 0 6px; }
-.aufgabentext p { margin: 0 0 10px; }
-.funktionshinweis { color: var(--leise); }
+h1 { margin: 2px 0 8px; font-size: 1.5rem; line-height: 1.25; }
+.beschreibung h2, .ergebnis h2 { font-size: 1rem; margin: 14px 0 6px; }
+.beispielbereich h2 { margin-top: 26px; }
+.aufgabentext p { margin: 0 0 8px; }
+
+.platzhalter {
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px dashed var(--rand);
+  border-radius: 6px;
+  color: var(--leise);
+}
 
 .beispiele {
   list-style: none;
@@ -102,7 +118,7 @@ h1 { margin: 2px 0 12px; font-size: 1.6rem; line-height: 1.25; }
 }
 
 .CodeMirror {
-  height: 320px;
+  height: max(280px, calc(100vh - 380px));
   border: 1px solid var(--rand);
   border-radius: 6px;
   font-family: var(--mono);
@@ -164,7 +180,7 @@ button:disabled { opacity: 0.6; cursor: wait; }
   border-radius: 6px;
   font-family: var(--mono);
   font-size: 0.88rem;
-  max-height: 240px;
+  max-height: 200px;
   overflow: auto;
   white-space: pre-wrap;
 }

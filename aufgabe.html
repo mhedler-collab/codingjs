@@ -23,39 +23,45 @@
 
     <div id="aufgabe" class="aufgabe">
       <section class="beschreibung">
-        <p id="kapitelname" class="kapitelname"></p>
-        <h1 id="titel"></h1>
-        <div id="text" class="aufgabentext"></div>
-        <p class="funktionshinweis">Gesucht: Funktion <code id="funktionsname"></code></p>
-        <div id="beispielbereich">
+        <div class="aufgabentext-bereich">
+          <p id="kapitelname" class="kapitelname"></p>
+          <h1 id="titel"></h1>
+          <div id="text" class="aufgabentext"></div>
+        </div>
+        <div id="beispielbereich" class="beispielbereich">
           <h2>Beispiele</h2>
           <ul id="beispiele" class="beispiele"></ul>
         </div>
       </section>
 
-      <section class="loesung">
-        <textarea id="code" aria-label="Ihr Code"></textarea>
-        <div class="knoepfe">
-          <button id="pruefen" class="haupt" type="button">Prüfen</button>
-          <span class="tastenhinweis">oder Strg + Enter</span>
-          <button id="zuruecksetzen" type="button">Zurücksetzen</button>
-        </div>
-
-        <div id="ergebnis" class="ergebnis" hidden>
-          <p id="zusammenfassung"></p>
-          <p id="hinweis" class="hinweis"></p>
-          <table id="testtabelle" class="testtabelle" hidden>
-            <thead>
-              <tr><th>Aufruf</th><th>erwartet</th><th>erhalten</th><th></th></tr>
-            </thead>
-            <tbody id="tests"></tbody>
-          </table>
-          <div id="konsolenbereich" hidden>
-            <h2>Konsole</h2>
-            <pre id="konsole" class="konsole"></pre>
+      <div class="arbeitsbereich">
+        <section class="loesung">
+          <textarea id="code" aria-label="Ihr Code"></textarea>
+          <div class="knoepfe">
+            <button id="pruefen" class="haupt" type="button">Prüfen</button>
+            <span class="tastenhinweis">oder Strg + Enter</span>
+            <button id="zuruecksetzen" type="button">Zurücksetzen</button>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section class="ergebnisspalte">
+          <p id="platzhalter" class="platzhalter">Schreiben Sie die Funktion <code id="funktionsname"></code> und klicken Sie auf <strong>Prüfen</strong>. Hier erscheinen dann die Testergebnisse.</p>
+          <div id="ergebnis" class="ergebnis" hidden>
+            <p id="zusammenfassung"></p>
+            <p id="hinweis" class="hinweis"></p>
+            <table id="testtabelle" class="testtabelle" hidden>
+              <thead>
+                <tr><th>Aufruf</th><th>erwartet</th><th>erhalten</th><th></th></tr>
+              </thead>
+              <tbody id="tests"></tbody>
+            </table>
+            <div id="konsolenbereich" hidden>
+              <h2>Konsole</h2>
+              <pre id="konsole" class="konsole"></pre>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   </main>
 

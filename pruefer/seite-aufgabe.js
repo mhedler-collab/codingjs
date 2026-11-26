@@ -93,7 +93,9 @@
         "Shift-Tab": function (cm) { cm.execCommand("indentLess"); },
       },
     });
-    const gespeichert = laden(speicherSchluessel);
+    // Leerer gespeicherter Code zählt nicht: dann wieder mit dem Funktionskopf starten.
+    let gespeichert = laden(speicherSchluessel);
+    if (gespeichert !== null && gespeichert.trim() === "") gespeichert = null;
     editor.setValue(gespeichert !== null ? gespeichert : startcode(aufgabe));
     if (gespeichert === null && aufgabe.vorgabe === undefined) editor.setCursor({ line: 1, ch: 2 });
     editor.on("change", function () { speichern(speicherSchluessel, editor.getValue()); });
@@ -105,12 +107,14 @@
       entfernen(speicherSchluessel);
       editor.setValue(startcode(aufgabe));
       $("ergebnis").hidden = true;
+      $("platzhalter").hidden = false;
       editor.focus();
     });
 
     function pruefen() {
       $("pruefen").disabled = true;
       $("ergebnis").hidden = false;
+      $("platzhalter").hidden = true;
       $("zusammenfassung").className = "";
       $("zusammenfassung").textContent = "Wird geprüft …";
       Pruefer.pruefe(editor.getValue(), aufgabe).then(function (antwort) {
