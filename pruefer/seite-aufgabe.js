@@ -107,12 +107,14 @@
       entfernen(speicherSchluessel);
       editor.setValue(startcode(aufgabe));
       $("ergebnis").hidden = true;
+      $("platzhalter").hidden = false;
       editor.focus();
     });
 
     function pruefen() {
       $("pruefen").disabled = true;
       $("ergebnis").hidden = false;
+      $("platzhalter").hidden = true;
       $("zusammenfassung").className = "";
       $("zusammenfassung").textContent = "Wird geprüft …";
       Pruefer.pruefe(editor.getValue(), aufgabe).then(function (antwort) {
