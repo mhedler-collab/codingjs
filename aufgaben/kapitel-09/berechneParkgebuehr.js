@@ -1,7 +1,7 @@
 aufgabe({
   titel: "Parkgebühr",
   funktion: "berechneParkgebuehr",
-  // Ohne "parameter" bleibt der Editor leer: Den Funktionskopf schreiben die Studierenden selbst.
+  parameter: ["stunden"],
   text: `
     <p>Ein Parkhaus verlangt 2 € Grundgebühr und 1,50 € pro Stunde.</p>
     <p>Schreiben Sie eine Funktion <code>berechneParkgebuehr()</code>, die für eine Anzahl Stunden

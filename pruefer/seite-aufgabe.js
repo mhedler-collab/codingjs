@@ -53,10 +53,8 @@
 
   function startcode(aufgabe) {
     if (aufgabe.vorgabe !== undefined) return aufgabe.vorgabe;
-    if (aufgabe.parameter) {
-      return "function " + aufgabe.funktion + "(" + aufgabe.parameter.join(", ") + ") {\n  \n}\n";
-    }
-    return "";
+    const parameter = aufgabe.parameter || [];
+    return "function " + aufgabe.funktion + "(" + parameter.join(", ") + ") {\n  \n}\n";
   }
 
   function zeigeAufgabe(aufgabe, kapitel) {
@@ -97,7 +95,7 @@
     });
     const gespeichert = laden(speicherSchluessel);
     editor.setValue(gespeichert !== null ? gespeichert : startcode(aufgabe));
-    if (gespeichert === null && aufgabe.parameter) editor.setCursor({ line: 1, ch: 2 });
+    if (gespeichert === null && aufgabe.vorgabe === undefined) editor.setCursor({ line: 1, ch: 2 });
     editor.on("change", function () { speichern(speicherSchluessel, editor.getValue()); });
     editor.focus();
 
