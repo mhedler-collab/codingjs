@@ -25,7 +25,7 @@ durch Doppelklick auf `index.html`.
 aufgabe({
   titel: "Überschrift der Aufgabe",
   funktion: "meineFunktion",            // Name der gesuchten Funktion
-  parameter: ["a", "b"],                // optional: Funktionskopf im Editor vorgeben
+  parameter: ["a", "b"],                // Parameter für den vorgegebenen Funktionskopf
   text: `<p>Aufgabentext (HTML erlaubt)</p>`,
   beispiele: 3,                         // optional: so viele Tests als Beispiel zeigen (Standard 3)
   eingabeUnveraendert: true,            // optional: übergebene Arrays dürfen nicht verändert werden
@@ -38,8 +38,10 @@ aufgabe({
 
 2. In `aufgaben/uebersicht.js` den Dateinamen ohne `.js` in die Liste des Kapitels eintragen.
 
-Ohne `parameter` bleibt der Editor leer und die Studierenden schreiben den Funktionskopf selbst.
-Mit `vorgabe: "..."` lässt sich stattdessen beliebiger Startcode vorgeben.
+Der Editor startet immer mit dem Funktionskopf `function meineFunktion(a, b) { }`.
+Ein Klick auf **Prüfen** zeigt deshalb sofort die Testtabelle. Hat die Funktion keine
+Parameter, `parameter: []` angeben. Mit `vorgabe: "..."` lässt sich stattdessen
+beliebiger Startcode vorgeben.
 
 Zahlen werden mit einer kleinen Toleranz verglichen (z. B. `0.1 + 0.2` gilt als `0.3`),
 Arrays elementweise. Ein Text `"8"` ist nicht dasselbe wie die Zahl `8`.
