@@ -1,20 +1,20 @@
 /*
- * Lädt Kapitelübersicht und Aufgabendateien aus dem Ordner aufgaben/.
- * Die Dateien dort rufen nur kapitel({...}) bzw. aufgabe({...}) auf.
+ * Lädt die Übersicht der Kategorien und die Aufgabendateien aus dem Ordner aufgaben/.
+ * Die Dateien dort rufen nur kategorie({...}) bzw. aufgabe({...}) auf.
  */
 (function () {
   "use strict";
 
-  const kapitelListe = [];
+  const kategorien = [];
   const aufgabenNachId = {};
 
   // Wird von aufgaben/uebersicht.js aufgerufen.
-  window.kapitel = function (daten) {
-    kapitelListe.push(daten);
+  window.kategorie = function (daten) {
+    kategorien.push(daten);
   };
 
   // Wird von jeder Aufgabendatei aufgerufen. Die Id ergibt sich aus dem Dateipfad,
-  // z. B. "kapitel-09/berechneParkgebuehr".
+  // z. B. "warmup/sum3".
   window.aufgabe = function (daten) {
     const quelle = document.currentScript && document.currentScript.getAttribute("src");
     const treffer = quelle && quelle.match(/aufgaben\/(.+)\.js$/);
@@ -26,12 +26,12 @@
     aufgabenNachId[daten.id] = daten;
   };
 
-  // Alle Aufgaben-Ids in der Reihenfolge der Übersicht, mit Kapitel.
+  // Alle Aufgaben-Ids in der Reihenfolge der Übersicht, mit Kategorie.
   function alleIds() {
     const ids = [];
-    kapitelListe.forEach(function (k) {
+    kategorien.forEach(function (k) {
       k.aufgaben.forEach(function (name) {
-        ids.push({ id: k.ordner + "/" + name, kapitel: k });
+        ids.push({ id: k.ordner + "/" + name, kategorie: k });
       });
     });
     return ids;
@@ -59,7 +59,7 @@
   }
 
   window.Aufgaben = {
-    kapitelListe: kapitelListe,
+    kategorien: kategorien,
     alleIds: alleIds,
     ladeAufgaben: ladeAufgaben,
   };

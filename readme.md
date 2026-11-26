@@ -9,8 +9,8 @@ Browser, es wird nichts gespeichert oder übertragen (außer dem eigenen Code im
 
 | Ordner / Datei | Inhalt |
 |---|---|
-| `aufgaben/uebersicht.js` | Kapitel und Reihenfolge der Aufgaben |
-| `aufgaben/kapitel-XX/<name>.js` | eine Aufgabe: Text, Funktionsname, Testfälle |
+| `aufgaben/uebersicht.js` | Kategorien und Reihenfolge der Aufgaben |
+| `aufgaben/<kategorie>/<name>.js` | eine Aufgabe: Text, Funktionsname, Testfälle |
 | `pruefer/` | Ausführungskomponente (unabhängig von den Aufgaben) |
 | `index.html`, `aufgabe.html` | Startseite und Aufgabenseite |
 
@@ -19,7 +19,7 @@ durch Doppelklick auf `index.html`.
 
 ## Neue Aufgabe anlegen
 
-1. Datei `aufgaben/kapitel-09/meineFunktion.js` anlegen:
+1. Datei `aufgaben/warmup/meineFunktion.js` anlegen (Ordner der Kategorie):
 
 ```js
 aufgabe({
@@ -36,7 +36,9 @@ aufgabe({
 });
 ```
 
-2. In `aufgaben/uebersicht.js` den Dateinamen ohne `.js` in die Liste des Kapitels eintragen.
+2. In `aufgaben/uebersicht.js` den Dateinamen ohne `.js` in die Liste der Kategorie eintragen.
+
+Eine neue Kategorie ist ein weiterer `kategorie({ titel, ordner, aufgaben })`-Block in `aufgaben/uebersicht.js`.
 
 Der Editor startet immer mit dem Funktionskopf `function meineFunktion(a, b) { }`.
 Ein Klick auf **Prüfen** zeigt deshalb sofort die Testtabelle. Hat die Funktion keine

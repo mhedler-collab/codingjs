@@ -1,4 +1,4 @@
-/* Startseite: zeigt alle Aufgaben, gruppiert nach Kapiteln. */
+/* Startseite: zeigt alle Aufgaben, gruppiert nach Kategorien. */
 (function () {
   "use strict";
 
@@ -10,21 +10,29 @@
     }
   }
 
-  const ziel = document.getElementById("kapitel");
-  const nurKapitel = new URLSearchParams(location.search).get("kapitel");
+  const ziel = document.getElementById("kategorien");
+  const nurKategorie = new URLSearchParams(location.search).get("kategorie");
 
-  Aufgaben.kapitelListe.forEach(function (k) {
-    if (nurKapitel && String(k.nummer) !== nurKapitel) return;
+  Aufgaben.kategorien.forEach(function (k) {
+    if (nurKategorie && k.ordner !== nurKategorie) return;
 
     const abschnitt = document.createElement("section");
-    abschnitt.className = "kapitel";
+    abschnitt.className = "kategorie";
     const ueberschrift = document.createElement("h2");
-    ueberschrift.textContent = "Kapitel " + k.nummer + ": " + k.titel;
+    ueberschrift.textContent = k.titel;
     abschnitt.appendChild(ueberschrift);
     const liste = document.createElement("ol");
     liste.className = "aufgabenliste";
     abschnitt.appendChild(liste);
     ziel.appendChild(abschnitt);
+
+    if (k.aufgaben.length === 0) {
+      const leer = document.createElement("p");
+      leer.className = "leer";
+      leer.textContent = "Noch keine Aufgaben.";
+      abschnitt.replaceChild(leer, liste);
+      return;
+    }
 
     const ids = k.aufgaben.map(function (name) { return k.ordner + "/" + name; });
     Aufgaben.ladeAufgaben(ids).then(function (aufgaben) {
