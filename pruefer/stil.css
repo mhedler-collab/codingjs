@@ -1,0 +1,172 @@
+:root {
+  --hintergrund: #f7f7f5;
+  --flaeche: #ffffff;
+  --text: #1f2328;
+  --leise: #5f6670;
+  --rand: #d8dadd;
+  --akzent: #1d5fa8;
+  --gruen: #1f7a35;
+  --gruen-hell: #e3f3e6;
+  --rot: #b42318;
+  --rot-hell: #fbe9e7;
+  --gelb-hell: #fff6dc;
+  --mono: ui-monospace, "Cascadia Mono", Consolas, "Courier New", monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--hintergrund);
+}
+
+a { color: var(--akzent); }
+
+code { font-family: var(--mono); font-size: 0.92em; }
+
+[hidden] { display: none !important; }
+
+.kopf {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding: 12px 24px;
+  background: var(--flaeche);
+  border-bottom: 1px solid var(--rand);
+}
+
+.marke {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.navigation { display: flex; gap: 20px; }
+.navigation a { text-decoration: none; }
+.navigation a.deaktiviert { color: var(--rand); pointer-events: none; }
+
+main { padding: 20px 24px; max-width: 1400px; margin: 0 auto; }
+
+.fuss {
+  padding: 16px 24px 28px;
+  color: var(--leise);
+  font-size: 0.85rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Startseite */
+.startseite { max-width: 820px; }
+.einleitung { margin-top: 0; }
+.kapitel h2 { margin: 28px 0 8px; font-size: 1.25rem; }
+.aufgabenliste { margin: 0; padding-left: 1.6em; }
+.aufgabenliste li { padding: 3px 0; }
+.aufgabenliste code { color: var(--leise); }
+.aufgabenliste .fehlt { color: var(--rot); }
+.haken { color: var(--gruen); font-weight: 700; }
+
+/* Aufgabenseite */
+.aufgabe {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .aufgabe { grid-template-columns: minmax(0, 1fr); }
+}
+
+.kapitelname { margin: 0; color: var(--leise); font-size: 0.9rem; }
+h1 { margin: 2px 0 12px; font-size: 1.6rem; line-height: 1.25; }
+.beschreibung h2, .ergebnis h2 { font-size: 1rem; margin: 18px 0 6px; }
+.aufgabentext p { margin: 0 0 10px; }
+.funktionshinweis { color: var(--leise); }
+
+.beispiele {
+  list-style: none;
+  margin: 0;
+  padding: 10px 14px;
+  background: var(--flaeche);
+  border: 1px solid var(--rand);
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+}
+
+.CodeMirror {
+  height: 320px;
+  border: 1px solid var(--rand);
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 15px;
+}
+
+.knoepfe {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+button {
+  font: inherit;
+  padding: 7px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--rand);
+  background: var(--flaeche);
+  color: var(--text);
+  cursor: pointer;
+}
+button.haupt { background: var(--akzent); border-color: var(--akzent); color: #fff; font-weight: 600; }
+button:disabled { opacity: 0.6; cursor: wait; }
+#zuruecksetzen { margin-left: auto; }
+.tastenhinweis { color: var(--leise); font-size: 0.85rem; }
+
+#zusammenfassung { font-weight: 600; padding: 8px 12px; border-radius: 6px; margin: 0 0 8px; }
+#zusammenfassung.geschafft { background: var(--gruen-hell); color: var(--gruen); }
+#zusammenfassung.teilweise { background: var(--gelb-hell); }
+#zusammenfassung.fehler { background: var(--rot-hell); color: var(--rot); font-family: var(--mono); font-weight: 500; }
+.hinweis:empty { display: none; }
+.hinweis { margin: 0 0 8px; }
+
+.testtabelle {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--flaeche);
+  font-size: 0.92rem;
+}
+.testtabelle th, .testtabelle td {
+  border: 1px solid var(--rand);
+  padding: 5px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+.testtabelle th { background: var(--hintergrund); font-weight: 600; }
+.testtabelle .codezelle { font-family: var(--mono); overflow-wrap: anywhere; }
+.testtabelle .status { width: 2.5em; text-align: center; font-weight: 700; }
+.testtabelle tr.ok .status { background: var(--gruen-hell); color: var(--gruen); }
+.testtabelle tr.falsch .status { background: var(--rot-hell); color: var(--rot); }
+
+.konsole {
+  margin: 0;
+  padding: 10px 12px;
+  background: #1f2328;
+  color: #e6e6e6;
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  max-height: 240px;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+.meldung { padding: 12px; background: var(--rot-hell); border-radius: 6px; }

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aufgabe · SE1 Selbstkontrolle</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="pruefer/vendor/codemirror/codemirror.css">
+  <link rel="stylesheet" href="pruefer/stil.css">
+</head>
+<body>
+  <header class="kopf">
+    <a class="marke" href="index.html">SE1 Selbstkontrolle</a>
+    <nav class="navigation">
+      <a id="vorherige" href="#">← vorherige</a>
+      <a id="uebersicht" href="index.html">Übersicht</a>
+      <a id="naechste" href="#">nächste →</a>
+    </nav>
+  </header>
+
+  <main>
+    <p id="meldung" class="meldung" hidden></p>
+
+    <div id="aufgabe" class="aufgabe">
+      <section class="beschreibung">
+        <p id="kapitelname" class="kapitelname"></p>
+        <h1 id="titel"></h1>
+        <div id="text" class="aufgabentext"></div>
+        <p class="funktionshinweis">Gesucht: Funktion <code id="funktionsname"></code></p>
+        <div id="beispielbereich">
+          <h2>Beispiele</h2>
+          <ul id="beispiele" class="beispiele"></ul>
+        </div>
+      </section>
+
+      <section class="loesung">
+        <textarea id="code" aria-label="Ihr Code"></textarea>
+        <div class="knoepfe">
+          <button id="pruefen" class="haupt" type="button">Prüfen</button>
+          <span class="tastenhinweis">oder Strg + Enter</span>
+          <button id="zuruecksetzen" type="button">Zurücksetzen</button>
+        </div>
+
+        <div id="ergebnis" class="ergebnis" hidden>
+          <p id="zusammenfassung"></p>
+          <p id="hinweis" class="hinweis"></p>
+          <table id="testtabelle" class="testtabelle" hidden>
+            <thead>
+              <tr><th>Aufruf</th><th>erwartet</th><th>erhalten</th><th></th></tr>
+            </thead>
+            <tbody id="tests"></tbody>
+          </table>
+          <div id="konsolenbereich" hidden>
+            <h2>Konsole</h2>
+            <pre id="konsole" class="konsole"></pre>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="fuss">
+    Ihr Code wird nur in diesem Browser ausgeführt und gespeichert. Nichts wird übertragen.<br>
+    Basiert auf <a href="https://github.com/the-winter/codingjs">CodingJS</a> von the-winter und Mitwirkenden
+    (ISC-Lizenz), angelehnt an <a href="https://codingbat.com/">CodingBat</a> von Nick Parlante.
+  </footer>
+
+  <script src="pruefer/vendor/codemirror/codemirror.js"></script>
+  <script src="pruefer/vendor/codemirror/javascript.js"></script>
+  <script src="pruefer/vendor/codemirror/matchbrackets.js"></script>
+  <script src="pruefer/vendor/codemirror/closebrackets.js"></script>
+  <script src="pruefer/vendor/codemirror/comment.js"></script>
+  <script src="pruefer/ausfuehren.js"></script>
+  <script src="pruefer/aufgaben-laden.js"></script>
+  <script src="aufgaben/uebersicht.js"></script>
+  <script src="pruefer/seite-aufgabe.js"></script>
+</body>
+</html>
